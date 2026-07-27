@@ -6,13 +6,21 @@ metadata:
 spec:
   project: default
   sources:
-    repoURL: https://github.com/traefik/traefik-helm-chart
-    targetRevision: HEAD
+  - repoURL: https://traefik.github.io/charts
+    targetRevision: 41.0.2
     chart: traefik
     helm:
       valueFiles:
-       - values.yaml
-
+      - $values/platform/traefik/values.yaml
+  - repoURL: https://github.com/thomas-k8s-devops-lab/gitops.git
+    targetRevision: main
+    ref: values
+  
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  
   destination:
     server: https://kubernetes.default.svc
     namespace: traefik

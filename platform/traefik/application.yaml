@@ -6,11 +6,12 @@ metadata:
 spec:
   project: default
   sources:
-  - repoURL: https://traefik.github.io/charts
+    repoURL: https://traefik.github.io/charts
+    targetRevision: HEAD
     chart: traefik
     helm:
       valueFiles:
-      - ./values.yaml
+       - values.yaml
 
   destination:
     server: https://kubernetes.default.svc
